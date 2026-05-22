@@ -1,0 +1,31 @@
+import unittest
+from triangle import classify_triangle
+
+class TestTriangleClassification(unittest.TestCase):
+
+    def test_tc01_invalid_min(self):
+        self.assertEqual(classify_triangle(0, 50, 50), "Invalid Input")
+
+    def test_tc02_invalid_max(self):
+        self.assertEqual(classify_triangle(101, 50, 50), "Invalid Input")
+
+    def test_tc03_not_triangle_equal_sum(self):
+        self.assertEqual(classify_triangle(50, 50, 100), "Not a Triangle")
+
+    def test_tc04_not_triangle_less_sum(self):
+        self.assertEqual(classify_triangle(10, 20, 50), "Not a Triangle")
+
+    def test_tc05_equilateral_min(self):
+        self.assertEqual(classify_triangle(1, 1, 1), "Equilateral")
+
+    def test_tc06_equilateral_max(self):
+        self.assertEqual(classify_triangle(100, 100, 100), "Equilateral")
+
+    def test_tc07_isosceles(self):
+        self.assertEqual(classify_triangle(50, 50, 60), "Isosceles")
+
+    def test_tc08_scalene(self):
+        self.assertEqual(classify_triangle(30, 40, 50), "Scalene")
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
